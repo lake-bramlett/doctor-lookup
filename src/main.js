@@ -1,6 +1,13 @@
 import $ from 'jquery';
 import { CategoryRequest } from './star-wars.js';
 
+function appendResults(results) {
+  $('span.category-result').empty();
+  for (let i = 0; i < results.results.length; i++) {
+    $('span.category-result').append('<br>').append(results.results[i].name,results.results[i].title);
+  }
+}
+
 $(document).ready(function () {
   let pageNum = 1;
 
@@ -14,10 +21,7 @@ $(document).ready(function () {
     promise.then(function (response) {
         let results = JSON.parse(response);
         console.log(results);
-        $('span.category-result').empty();
-        for (let i = 0; i < results.results.length; i++) {
-          $('span.category-result').append('<br>').append(results.results[i].name,results.results[i].title);
-        }
+        appendResults(results);
       },
 
       function (error) {
@@ -28,7 +32,6 @@ $(document).ready(function () {
   });//$('button.category-button').click()
 
   $('button.next').click(function () {
-    console.log('next page fired');
     let categoryName = $('.category-select').val();
     pageNum ++;
     let categoryRequest = new CategoryRequest();
@@ -37,10 +40,7 @@ $(document).ready(function () {
     promise.then(function (response) {
       let results = JSON.parse(response);
       console.log(results);
-      $('span.category-result').empty();
-      for (let i = 0; i < results.results.length; i++) {
-        $('span.category-result').append('<br>').append(results.results[i].name,results.results[i].title);
-      }
+      appendResults(results);
     },
 
     function (error) {
@@ -58,10 +58,7 @@ $(document).ready(function () {
     promise.then(function (response) {
       let results = JSON.parse(response);
       console.log(results);
-      $('span.category-result').empty();
-      for (let i = 0; i < results.results.length; i++) {
-        $('span.category-result').append('<br>').append(results.results[i].name,results.results[i].title);
-      }
+      appendResults(results);
     },
 
     function (error) {
