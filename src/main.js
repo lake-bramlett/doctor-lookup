@@ -1,10 +1,11 @@
 import $ from 'jquery';
-import { CategoryRequest, NextPage } from './star-wars.js';
+import { CategoryRequest } from './star-wars.js';
 
 $(document).ready(function () {
   let pageNum = 1;
 
   $('button.category-button').click(function () {
+    pageNum = 1;
     let categoryName = $('.category-select').val();
 
     let categoryRequest = new CategoryRequest();
