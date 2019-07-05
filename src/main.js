@@ -4,7 +4,6 @@ import './styles.css';
 
 $(document).ready(function() {
   console.log('jquery enabled');
-  console.log(process.env.API);
 
   let populateSpecialties = new GetSpecialties();
   let promise = populateSpecialties.getSpecialties();
@@ -26,6 +25,7 @@ $(document).ready(function() {
 
   $('.name-button').click(function(event) {
     $('.search-output').empty();
+    $('.doctor-name').reset();
     console.log('click event fired');
     event.preventDefault();
     const docName = $('.doctor-name').val();
@@ -63,16 +63,16 @@ $(document).ready(function() {
     console.log('click event fired');
     event.preventDefault();
     const specialty = $('.specialty').val();
+    console.log(specialty);
 
     let doctorRequestBySpeciality = new DoctorRequest();
-    let promise = doctorRequestBySpeciality.getDoctorByName(specialty);
+    let promise = doctorRequestBySpeciality.getDoctorBySpecialty(specialty);
 
     promise.then(function (response) {
          let results = JSON.parse(response);
          console.log(results);
 
          for(let i = 0; i < results.data.length; i++) {
-            console.log('number of specialties' + results.data[i].specialties.length);
              $('.search-output').append(
                `<div class="profile doctor${i}">
                   <img src="${results.data[i].profile.image_url}" />
