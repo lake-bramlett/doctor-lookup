@@ -1,6 +1,7 @@
 import $ from 'jquery';
 import { DoctorRequest, GetSpecialties } from './doctor-lookup.js';
 import './styles.css';
+import apiKey from './../workaround.js';
 
 $(document).ready(function() {
   console.log('jquery enabled');
