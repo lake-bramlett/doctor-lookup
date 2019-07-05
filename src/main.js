@@ -45,7 +45,7 @@ $(document).ready(function() {
                   <h5 class="specialties">Specialties: </h5>
                 </div>`);
               for(let j = 0; j < results.data[i].specialties.length; j++) {
-                $(`.search-output .profile${i} .specialties`).append(results.data[i].specialties[j].name + ', ')
+                $(`.search-output .profile.doctor${i} .specialties`).append(results.data[i].specialties[j].name + ', ')
               };
 
          };
@@ -76,10 +76,12 @@ $(document).ready(function() {
                `<div class="profile doctor${i}">
                   <img src="${results.data[i].profile.image_url}" />
                   <h4>Name: ${results.data[i].profile.last_name}, ${results.data[i].profile.first_name}</h4>
-                  <h5 class="specialties">Specialties: </h5>
+                  <h5>Specialties: </h5>
+                  <div class="specialties"></div>
                 </div>`);
               for(let j = 0; j < results.data[i].specialties.length; j++) {
-                $(`.search-output .profile${i} .specialties`).append(results.data[i].specialties[j].name + ', ')
+                console.log('loop firing');
+                $(`.search-output .profile.doctor${i} .specialties`).append(results.data[i].specialties[j].name + ', ')
               };
 
          };
