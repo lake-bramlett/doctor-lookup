@@ -1,10 +1,10 @@
 import $ from 'jquery';
 import { DoctorRequest, GetSpecialties } from './doctor-lookup.js';
 import './styles.css';
-import apiKey from './../workaround.js';
 
 $(document).ready(function() {
   console.log('jquery enabled');
+  console.log(process.env.TEST);
 
   let populateSpecialties = new GetSpecialties();
   let promise = populateSpecialties.getSpecialties();
@@ -26,6 +26,7 @@ $(document).ready(function() {
 
   $('.name-button').click(function(event) {
     $('.search-output').empty();
+      console.log(process.env.export.apiKey);
     console.log('click event fired');
     event.preventDefault();
     const docName = $('.doctor-name').val();
