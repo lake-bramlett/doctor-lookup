@@ -2,22 +2,20 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>Star Wars Query</title>
+    <title>Doctor Lookup</title>
   </head>
   <body>
-    <select class="category-select" name="">
-      <option value="people">People</option>
-      <option value="planets">Planets</option>
-      <option value="films">Films</option>
-      <option value="species">Species</option>
-      <option value="vehicles">Vehicles</option>
-      <option value="starships">Starships</option>
-    </select>
-    <button class="category-button" type="button" name="button">Click</button>
-    <div class="category-output">
-      <h3 class="category-name">Category: <span class="category-result"></span></h3>
-      <button class="previous" type="button" name="button">Previous</button>
-      <button class="next" type="button" name="button">Next</button>
+      <h3>Search by Name</h3>
+      <label for="docotr-name">Name:</label>
+      <input class="doctor-name" type="text" name="" value="">
+      <button class="name-button" type="button" name="button">Search by Name</button>
+      <h3>Search by Specialty</h3>
+      <select class="specialty" name="">
+        <option value="''"><em>--Select Specialty--</em></option>
+      </select>
+      <button class="specialty-button" type="button" name="button">Search by Specialty</button>
+    <div class="search-output">
+
     </div>
   </body>
 </html>
