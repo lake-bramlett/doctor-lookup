@@ -1,8 +1,8 @@
 export class DoctorRequest {
-  getCategoryInfo(inputCategory,pageNum) {
+  getDoctorInfo(docName,condition) {
     return new Promise(function (resolve, reject) {
       let request = new XMLHttpRequest();
-      let url = `https://api.betterdoctor.com/2016-03-01/${inputCategory}?user_key=${apiKey}`;
+      let url = `https://api.betterdoctor.com/2016-03-01/doctors?name=${docName}?location=45.520645,-122.677452&user_key=${apiKey}`;
       request.onload = function () {
         if (this.status === 200) {
           resolve(request.response);
