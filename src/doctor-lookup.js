@@ -1,9 +1,9 @@
 
 export class DoctorRequest {
-  getDoctorByName(docName) {
+  getDoctorByName(docName,distance) {
     return new Promise(function (resolve, reject) {
       let request = new XMLHttpRequest();
-      let url = `https://api.betterdoctor.com/2016-03-01/doctors?name=${docName}&location=45.520645,-122.677452,100&sort=last-name-asc&skip=2&limit=10&user_key=${process.env.exports.apiKey}`;
+      let url = `https://api.betterdoctor.com/2016-03-01/doctors?name=${docName}&location=45.520645,-122.677452,${distance}&sort=last-name-asc&skip=2&limit=10&user_key=${process.env.exports.apiKey}`;
       request.onload = function () {
         if (this.status === 200) {
           resolve(request.response);
@@ -17,10 +17,10 @@ export class DoctorRequest {
     });
   };
 
-  getDoctorBySpecialty(specialty) {
+  getDoctorBySpecialty(specialty,distance) {
     return new Promise(function (resolve, reject) {
       let request = new XMLHttpRequest();
-      let url = `https://api.betterdoctor.com/2016-03-01/doctors?specialty_uid=${specialty}&location=45.520645,-122.677452,100&sort=last-name-asc&skip=2&limit=10&user_key=${process.env.exports.apiKey}`;
+      let url = `https://api.betterdoctor.com/2016-03-01/doctors?specialty_uid=${specialty}&location=45.520645,-122.677452,${distance}&sort=last-name-asc&skip=2&limit=10&user_key=${process.env.exports.apiKey}`;
       request.onload = function () {
         if (this.status === 200) {
           resolve(request.response);

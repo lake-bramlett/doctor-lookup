@@ -29,10 +29,12 @@ $(document).ready(function() {
     console.log('click event fired');
     event.preventDefault();
     const docName = $('.doctor-name').val();
+    const distance = parseInt($('.distance').val());
+    console.log(distance);
 
     if (true) {
       let doctorRequestByName = new DoctorRequest();
-      let promise = doctorRequestByName.getDoctorByName(docName);
+      let promise = doctorRequestByName.getDoctorByName(docName,distance);
 
       promise.then(function (response) {
         let results = JSON.parse(response);
@@ -69,10 +71,11 @@ $(document).ready(function() {
     console.log('click event fired');
     event.preventDefault();
     const specialty = $('.specialty').val();
+    const distance = parseInt($('.distance').val());
     console.log(specialty);
 
     let doctorRequestBySpeciality = new DoctorRequest();
-    let promise = doctorRequestBySpeciality.getDoctorBySpecialty(specialty);
+    let promise = doctorRequestBySpeciality.getDoctorBySpecialty(specialty,distance);
 
     promise.then(function (response) {
          let results = JSON.parse(response);
