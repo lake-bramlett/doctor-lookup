@@ -34,17 +34,24 @@ $(document).ready(function() {
       promise.then(function (response) {
         let results = JSON.parse(response);
         for(let i = 0; i < results.data.length; i++) {
+          if (results.data[i].practices[0].accepts_new_patients===true) {
+            results.data[i].practices[0].accepts_new_patients = 'Yes';
+          } else if (results.data[i].practices[0].accepts_new_patients!==true){
+            results.data[i].practices[0].accepts_new_patients = 'Not at this time'
+          };
           $('.search-output').append(
             `<div class="profile doctor${i}">
             <img src="${results.data[i].profile.image_url}" />
             <h4>Name: ${results.data[i].profile.last_name}, ${results.data[i].profile.first_name}</h4>
+            <h4>Address:</h4> ${results.data[i].practices[0].visit_address.street}<br>${results.data[i].practices[0].visit_address.city}, ${results.data[i].practices[0].visit_address.state} ${results.data[i].practices[0].visit_address.zip}
             <h5>Specialties: </h5>
             <div class="specialties"></div>
+            <h5>Accepting New Patients:</h5>
+            <div class="new-patients">${results.data[i].practices[0].accepts_new_patients}</div>
             </div>`);
             for(let j = 0; j < results.data[i].specialties.length; j++) {
               $(`.search-output .profile.doctor${i} .specialties`).append(results.data[i].specialties[j].name + ', ')
             };
-
           };
         },
 
@@ -75,12 +82,20 @@ $(document).ready(function() {
            $('.search-output').html(`<h3  class="input-error">No doctors could be found in your area. Try expanding your search.</h3>`);
          } else {
            for(let i = 0; i < results.data.length; i++) {
+             if (results.data[i].practices[0].accepts_new_patients===true) {
+               results.data[i].practices[0].accepts_new_patients = 'Yes';
+             } else if (results.data[i].practices[0].accepts_new_patients!==true) {
+               results.data[i].practices[0].accepts_new_patients = 'Not at this time'
+             };
              $('.search-output').append(
                `<div class="profile doctor${i}">
                <img src="${results.data[i].profile.image_url}" />
                <h4>Name: ${results.data[i].profile.last_name}, ${results.data[i].profile.first_name}</h4>
+               <h4>Address:</h4> ${results.data[i].practices[0].visit_address.street}<br>${results.data[i].practices[0].visit_address.city}, ${results.data[i].practices[0].visit_address.state} ${results.data[i].practices[0].visit_address.zip}
                <h5>Specialties: </h5>
                <div class="specialties"></div>
+               <h5>Accepting New Patients:</h5>
+               <div class="new-patients">${results.data[i].practices[0].accepts_new_patients}</div>
                </div>`);
                for(let j = 0; j < results.data[i].specialties.length; j++) {
                  $(`.search-output .profile.doctor${i} .specialties`).append(results.data[i].specialties[j].name + ', ')
